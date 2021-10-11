@@ -14,15 +14,8 @@ class MyCircularDeque(object):
         :type value: int
         :rtype: bool
         """
-        print(str(self.arr))
-        print("insert value ="+str(value))
         if not self.isFull():
-            self.arr.append(0)
-            for index in range(1,len(self.arr)).__reversed__():
-                print(index)
-                self.arr[index] = self.arr[index - 1]
-            self.arr[0] = value
-
+            self.arr.insert(0,value)
             return True
         else:
             return False
@@ -43,9 +36,8 @@ class MyCircularDeque(object):
         """
         :rtype: bool
         """
-
         if not self.isEmpty():
-            self.arr = self.arr[1:]
+            del self.arr[0]
             return True
         else:
             return False
@@ -56,7 +48,7 @@ class MyCircularDeque(object):
         :rtype: bool
         """
         if not self.isEmpty():
-            self.arr = self.arr[:-1]
+            del self.arr[-1]
             return True
         else:
             return False
